@@ -8,3 +8,39 @@ body.dark .icon,body.dark .profileicon img{filter:brightness(0) saturate(100%) i
 nav a.active .icon,nav a.active .profileicon img{filter:brightness(0) saturate(100%) invert(64%) sepia(19%) saturate(700%) hue-rotate(318deg)}
 a.plain{color:inherit;text-decoration:none}.record.card{background:var(--surface)}
 nav[hidden]{display:none}.entry-flow main{min-height:100dvh}.entry-flow{background:var(--canvas)}.welcome-page,.setup-page{display:flex;flex-direction:column;min-height:calc(100dvh - 48px);gap:24px}.welcome-brand{font-size:32px;font-weight:700;line-height:40px;color:var(--brand)}.welcome-brand span{display:block;font-size:12px;line-height:16px;font-weight:400;color:var(--secondary);margin-top:4px}.welcome-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;padding:24px 0}.welcome-main h1{font-size:28px;line-height:36px}.welcome-art{width:220px;height:220px;border-radius:50%;background:var(--soft);display:grid;place-items:center;margin-bottom:8px}.welcome-art .fruit{width:220px;height:200px}.welcome-art .fruit>img.baby{width:200px;height:200px}.welcome-actions .caption{text-align:center}.setup-nav{display:flex;align-items:center;justify-content:space-between}.setup-nav a{color:var(--brand);text-decoration:none}.setup-progress{display:flex;gap:8px}.setup-progress span{height:5px;background:var(--border);border-radius:999px;flex:1}.setup-progress span.complete{background:var(--sage)}.setup-center{flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;text-align:center}.setup-center .field,.setup-center .card{text-align:left}.setup-center>.setup-icon{align-self:center}.setup-icon{width:80px;height:80px;border-radius:50%;background:color-mix(in srgb,var(--soft),transparent 65%);display:grid;place-items:center;box-shadow:0 1px 2px #0002}.setup-icon.small{width:64px;height:64px}.setup-actions{margin-top:auto;padding-top:8px;padding-bottom:8px}.setup-actions .btn{min-height:52px}.setup-health-content{display:flex;flex-direction:column;gap:24px;flex:1}.setup-intro{display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}.setup-intro .setup-icon{margin-bottom:4px}.setup-page .field{font-weight:600}.setup-page input{font-weight:400;min-width:0}.input-icon{position:relative;display:block}.input-icon>.icon,.waist-icon{position:absolute;top:14px;left:12px;z-index:1}.input-icon input{padding-left:40px}.waist-icon{border:1px solid var(--muted);border-radius:50%;width:16px;height:16px;display:grid;place-items:center;font-size:10px;line-height:15px;font-weight:700}.pregnancy-chips{display:flex;gap:8px}.pregnancy-chips button{flex:1;min-width:0;min-height:36px;border:1px solid var(--border);border-radius:999px;background:var(--surface);font-size:12px;padding:8px}.pregnancy-chips button.selected{background:var(--soft);border-color:var(--brand)}.pregnancy-setup .stack{gap:16px}.center{text-align:center}@media(min-width:600px){.entry-flow main{min-height:calc(100dvh - 48px)}.welcome-page,.setup-page{min-height:calc(100dvh - 96px)}}
+/* Home companions: compact single / twins, with independent gentle float. */
+.home-fruits{height:156px;flex:0 1 124px;min-width:0;display:flex;align-items:center;justify-content:center;gap:4px;overflow:visible}
+.home-fruits.is-twins{flex-basis:164px;max-width:49%;gap:2px}
+.home-fruit-companion{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.home-fruit-float{width:100%;position:relative;animation:nestly-home-float var(--fruit-duration,3.8s) ease-in-out var(--fruit-delay,0s) infinite;will-change:transform}
+.home-fruit-image{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.home-fruit-accessory{position:absolute;width:45%;height:auto;left:27.5%;top:4%;object-fit:contain}
+.home-fruit-label{font-size:10px;line-height:16px;color:var(--brand);text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@keyframes nestly-home-float{0%,100%{transform:translateY(3px)}50%{transform:translateY(-5px)}}
+@media(max-width:360px){.home-fruits.is-twins{max-width:46%}.baby-copy h1{font-size:22px;line-height:28px}}
+@media(prefers-reduced-motion:reduce){.home-fruit-float{animation:none;will-change:auto}}
+/* Random positions stay clipped to their own column, clear of pregnancy copy. */
+.home-fruits{position:relative;display:block;overflow:hidden;isolation:isolate;contain:paint}
+.home-fruit-companion{position:absolute;display:block;width:60%;left:var(--fruit-x,0%);top:var(--fruit-y,24px)}
+.home-fruits.is-single .home-fruit-companion{width:86%}
+/* Expanded right-hand play area, matching the supplied reference box. */
+.home-fruits{height:196px;align-self:center}
+.home-fruits.is-single .home-fruit-companion{width:68%}
+.home-fruit-tilt{width:100%;transform:rotate(var(--fruit-angle,0deg));transform-origin:center}
+/* Twins on Tasks have separate, non-overlapping slots; outer arms face away. */
+.task-twins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:12px 0;width:100%;align-items:end}
+.task-twin{display:flex;flex-direction:column;align-items:center;min-width:0;gap:4px}
+.task-twin-art{width:100%;max-width:132px}.task-twin-art.faces-right{transform:scaleX(-1)}
+.task-twins .fruit{width:100%;height:140px;overflow:visible}.task-twins .fruit>img.baby{width:132px;height:132px}
+.task-twins .fruit .accessory{width:64px;height:auto;left:calc(50% - 32px);top:6px}
+.task-twin-art .home-fruit-float{width:100%}.baby-selector button{font-size:12px}
+@media(max-width:360px){.task-twins{gap:8px}.task-twin-art{max-width:108px}.task-twins .fruit{height:120px}.task-twins .fruit>img.baby{width:108px;height:108px}.task-twins .fruit .accessory{width:54px;left:calc(50% - 27px);top:8px}}
+/* The fruit and its accessory scale together; layout slots remain stable. */
+.fruit-stage-art{position:relative;width:180px;height:180px;flex-shrink:0;transform:scale(var(--stage-scale,1));transform-origin:center}
+.fruit-stage-art>img.baby{display:block;width:100%;height:100%;object-fit:contain}
+.home-fruit-stage{position:relative;width:100%;transform:scale(var(--stage-scale,1));transform-origin:center}
+.task-twins .fruit-stage-art{width:132px;height:132px}
+.welcome-art .fruit-stage-art{width:200px;height:200px}
+@media(max-width:360px){.task-twins .fruit-stage-art{width:108px;height:108px}}
+/* Separate random lanes keep even the largest, tilted twins under 50% overlap. */
+.home-fruits.is-twins .home-fruit-companion{width:44%}
